@@ -3,17 +3,25 @@ project(phantom)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(BUILD_SHARED_LIBS true)
+#set(BUILD_SHARED_LIBS true)
 
-# the RPATH to be used when installing
-SET(CMAKE_INSTALL_RPATH "")
+## the RPATH to be used when installing
+#SET(CMAKE_INSTALL_RPATH "")
 
 include_directories(
-                    ${CMAKE_SOURCE_DIR}/include
+                    ${CMAKE_CURRENT_SOURCE_DIR}/include
+                    ${CMAKE_CURRENT_SOURCE_DIR}/src/phantom
                     )
 
 add_library( phantom SHARED
 		${headers}
-		src/test.hpp
-		src/test.cpp
+                src/phantom/core.hpp
+                src/phantom/core.cpp
+                src/phantom/application.cpp
+                src/phantom/application.hpp
+                src/phantom/entry_point.hpp
+                src/phantom/entry_point.cpp
+                src/phantom.hpp
+                src/test.hpp
+                src/test.cpp
 		)

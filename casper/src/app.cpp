@@ -1,9 +1,20 @@
-namespace Phantom
-{
-	void Print();
-}
+#include "phantom.hpp"
 
-int main()
+class Casper : public Phantom::Application
 {
-    Phantom::Print();
+public:
+    Casper()
+    {
+
+    }
+
+    ~Casper()
+    {
+
+    }
+};
+
+Phantom::Application* Phantom::CreateApplication()
+{
+    return new Casper();
 }
