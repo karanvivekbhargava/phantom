@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(
     ${phantom_SOURCE_DIR}/src
+    ${phantom_SOURCE_DIR}/vendor/spdlog/include
 )
 
 ## the RPATH to be used when installing
