@@ -28,3 +28,4 @@ add_library( phantom SHARED
                 src/test.hpp
                 src/test.cpp
 		)
+#cotire(phantom)
