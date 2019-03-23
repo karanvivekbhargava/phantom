@@ -1,6 +1,8 @@
 #include <iostream>
 #include "phantom/test.hpp"
 
+#include "phantom/events/event.hpp"
+
 namespace Phantom
 {
 	void Print()

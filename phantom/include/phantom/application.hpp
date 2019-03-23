@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iostream>
+#include "phantom/log.hpp"
 
 namespace Phantom
 {

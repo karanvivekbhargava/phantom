@@ -14,7 +14,7 @@ Application::~Application()
 
 void Application::Run()
 {
-    std::cout << "Welcome to Phantom Engine!\n";
+    PHTM_CORE_TRACE("Welcome to Phantom Engine!");
 	while(true)
 	{
 	
