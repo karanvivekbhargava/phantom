@@ -9,6 +9,9 @@ include_directories(
     ${phantom_SOURCE_DIR}/vendor/spdlog/include
 )
 
+file(GLOB_RECURSE SRCS src/*)
+file(GLOB_RECURSE HDRS include/*)
+
 # message("phantom install dir: ${phantom_BINARY_DIR}")
 
 # file(GLOB_RECURSE TEST_FILES
@@ -16,11 +19,14 @@ include_directories(
 # )
 # message("Files:  ${TEST_FILES}")
 
-add_executable(casper
-    ${headers}
-    src/app.cpp
+file(GLOB_RECURSE SRCS src/*)
+file(GLOB_RECURSE HDRS include/*)
+
+add_executable(${PROJECT_NAME}
+    ${HDRS}
+    ${SRCS}
 )
 
-target_link_libraries(casper
+target_link_libraries(${PROJECT_NAME}
     phantom
 )
