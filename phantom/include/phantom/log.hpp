@@ -11,11 +11,11 @@ class Log
 {
   public:
     static void Init();
-    inline static std::shared_ptr<spdlog::logger>& getCoreLogger()
+    inline static std::shared_ptr<spdlog::logger>& GetCoreLogger()
     {
         return m_core_logger;
     }
-    inline static std::shared_ptr<spdlog::logger>& getClientLogger()
+    inline static std::shared_ptr<spdlog::logger>& GetClientLogger()
     {
         return m_client_logger;
     }
@@ -26,15 +26,15 @@ class Log
 
 }
 
-#define PHTM_CORE_FATAL(...) ::Phantom::Log::getCoreLogger()->fatal(__VA_ARGS__)
-#define PHTM_CORE_ERROR(...) ::Phantom::Log::getCoreLogger()->error(__VA_ARGS__)
-#define PHTM_CORE_WARN(...)  ::Phantom::Log::getCoreLogger()->warn(__VA_ARGS__)
-#define PHTM_CORE_INFO(...)  ::Phantom::Log::getCoreLogger()->info(__VA_ARGS__)
-#define PHTM_CORE_TRACE(...) ::Phantom::Log::getCoreLogger()->trace(__VA_ARGS__)
+#define PHTM_CORE_FATAL(...) ::Phantom::Log::GetCoreLogger()->fatal(__VA_ARGS__)
+#define PHTM_CORE_ERROR(...) ::Phantom::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define PHTM_CORE_WARN(...)  ::Phantom::Log::GetCoreLogger()->warn(__VA_ARGS__)
+#define PHTM_CORE_INFO(...)  ::Phantom::Log::GetCoreLogger()->info(__VA_ARGS__)
+#define PHTM_CORE_TRACE(...) ::Phantom::Log::GetCoreLogger()->trace(__VA_ARGS__)
 
 
-#define PHTM_CLIENT_FATAL(...) ::Phantom::Log::getClientLogger()->fatal(__VA_ARGS__)
-#define PHTM_CLIENT_ERROR(...) ::Phantom::Log::getClientLogger()->error(__VA_ARGS__)
-#define PHTM_CLIENT_WARN(...)  ::Phantom::Log::getClientLogger()->warn(__VA_ARGS__)
-#define PHTM_CLIENT_INFO(...)  ::Phantom::Log::getClientLogger()->info(__VA_ARGS__)
-#define PHTM_CLIENT_TRACE(...) ::Phantom::Log::getClientLogger()->trace(__VA_ARGS__)
+#define PHTM_CLIENT_FATAL(...) ::Phantom::Log::GetClientLogger()->fatal(__VA_ARGS__)
+#define PHTM_CLIENT_ERROR(...) ::Phantom::Log::GetClientLogger()->error(__VA_ARGS__)
+#define PHTM_CLIENT_WARN(...)  ::Phantom::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define PHTM_CLIENT_INFO(...)  ::Phantom::Log::GetClientLogger()->info(__VA_ARGS__)
+#define PHTM_CLIENT_TRACE(...) ::Phantom::Log::GetClientLogger()->trace(__VA_ARGS__)
