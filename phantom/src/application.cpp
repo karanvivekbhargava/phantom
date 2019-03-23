@@ -1,5 +1,4 @@
-#include <iostream>
-#include "application.hpp"
+#include "phantom/application.hpp"
 
 namespace Phantom
 {

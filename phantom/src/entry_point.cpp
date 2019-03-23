@@ -1,4 +1,4 @@
-#include "entry_point.hpp"
+#include "phantom/entry_point.hpp"
 
 extern Phantom::Application* Phantom::CreateApplication();
 

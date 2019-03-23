@@ -1,5 +1,5 @@
 #include <iostream>
-#include "test.hpp"
+#include "phantom/test.hpp"
 
 namespace Phantom
 {

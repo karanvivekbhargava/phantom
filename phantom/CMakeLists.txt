@@ -5,27 +5,16 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #set(BUILD_SHARED_LIBS true)
 
-## the RPATH to be used when installing
-#SET(CMAKE_INSTALL_RPATH "")
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include
+					${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog/include
+)
 
-include_directories(
-                    ${CMAKE_CURRENT_SOURCE_DIR}/include
-                    ${CMAKE_CURRENT_SOURCE_DIR}/src/phantom
-                    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog/include
-                    )
-
-add_library( phantom SHARED
+add_library( ${PROJECT_NAME} SHARED
 		${headers}
-                src/phantom/core.hpp
-                src/phantom/core.cpp
-                src/phantom/application.cpp
-                src/phantom/application.hpp
-                src/phantom/entry_point.hpp
-                src/phantom/entry_point.cpp
-                src/phantom/log.hpp
-                src/phantom/log.cpp
-                src/phantom.hpp
-                src/test.hpp
+                src/core.cpp
+                src/application.cpp
+                src/entry_point.cpp
+                src/log.cpp
                 src/test.cpp
 		)
-#cotire(phantom)
+cotire(phantom)

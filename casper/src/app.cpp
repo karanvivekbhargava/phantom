@@ -1,4 +1,4 @@
-#include "phantom.hpp"
+#include "phantom/phantom.hpp"
 
 class Casper : public Phantom::Application
 {
