@@ -3,6 +3,7 @@
 #include "phantom/core.hpp"
 #include <string>
 #include <functional>
+//#include <fmt/ostream.h>
 
 namespace Phantom
 {
@@ -30,7 +31,7 @@ namespace Phantom
     };
 
 // These are some macros which will help prototyping multiple classes
-#define EVENT_CLASS_TYPE(type)  static EventType GetStaticType() {return EventType::##type;}\
+#define EVENT_CLASS_TYPE(type)  static EventType GetStaticType() {return EventType::type;}\
                                 virtual EventType GetEventType() const override {return GetStaticType();}\
                                 virtual const char* GetName() const override {return #type;}
 

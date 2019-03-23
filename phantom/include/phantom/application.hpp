@@ -1,5 +1,6 @@
 #pragma once
 
+#include "phantom/events/event.hpp"
 #include "phantom/log.hpp"
 
 namespace Phantom
