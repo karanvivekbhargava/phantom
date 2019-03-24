@@ -4,3 +4,6 @@
 [submodule "cotire"]
 	path = cotire
 	url = https://github.com/sakra/cotire
+[submodule "phantom/vendor/glfw"]
+	path = phantom/vendor/glfw
+	url = https://github.com/glfw/glfw.git

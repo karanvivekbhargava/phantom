@@ -4,9 +4,15 @@ project(phantom)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+add_subdirectory(vendor/glfw)
+
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw/include
 )
 
 file(GLOB_RECURSE SRCS src/*)
@@ -16,6 +22,9 @@ add_library( ${PROJECT_NAME} SHARED
     ${HDRS}
     ${SRCS}
 )
+
+target_link_libraries( phantom glfw )
+
 
 #install(TARGETS phantom
 #    LIBRARY DESTINATION lib
