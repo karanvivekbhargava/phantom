@@ -1,9 +1,7 @@
 #pragma once
 
 #include "phantom/core.hpp"
-#include <string>
-#include <functional>
-//#include <fmt/ostream.h>
+#include "phantom/phantom_pch.hpp"
 
 namespace Phantom
 {

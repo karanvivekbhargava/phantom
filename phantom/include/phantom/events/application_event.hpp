@@ -1,6 +1,6 @@
 #pragma once
 
-#include <sstream>
+#include "phantom/phantom_pch.hpp"
 #include "event.hpp"
 
 namespace Phantom

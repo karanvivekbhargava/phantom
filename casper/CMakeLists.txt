@@ -9,15 +9,17 @@ include_directories(
     ${phantom_SOURCE_DIR}/vendor/spdlog/include
 )
 
-file(GLOB_RECURSE SRCS src/*)
-file(GLOB_RECURSE HDRS include/*)
+file(GLOB_RECURSE SO_FILE
+  "${phantom_BINARY_DIR}/*.so"
+)
 
-# message("phantom install dir: ${phantom_BINARY_DIR}")
+message("phantom install dir: ${phantom_BINARY_DIR}")
+message("Files:  ${SO_FILE}")
 
-# file(GLOB_RECURSE TEST_FILES
-#   "${phantom_BINARY_DIR}/*.so"
-# )
-# message("Files:  ${TEST_FILES}")
+link_directories(${SO_FILE})
+
+
+
 
 file(GLOB_RECURSE SRCS src/*)
 file(GLOB_RECURSE HDRS include/*)
