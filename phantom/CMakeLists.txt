@@ -23,7 +23,7 @@ add_library( ${PROJECT_NAME} SHARED
     ${SRCS}
 )
 
-target_link_libraries( phantom glfw )
+target_link_libraries( phantom glfw GL)
 
 
 #install(TARGETS phantom
