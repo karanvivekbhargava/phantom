@@ -13,8 +13,11 @@ namespace Phantom
         Application();
         virtual ~Application();
         void Run();
+        void OnEvent(Event& e);
 
       private:
+        bool OnWindowClose(WindowCloseEvent& e);
+
         bool m_is_running;
         std::unique_ptr<Window> m_window;
     };

@@ -22,7 +22,7 @@ namespace Phantom
             ss << "MouseMovedEvent: (" << m_x << ", " << m_y << ")";
             return ss.str();
         }
-        EVENT_CLASS_TYPE(MouseMovedEvent)
+        EVENT_CLASS_TYPE(MouseMoved)
         EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
       private:
         float32_t m_x, m_y;

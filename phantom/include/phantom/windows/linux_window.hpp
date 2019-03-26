@@ -3,6 +3,10 @@
 #include "GLFW/glfw3.h"
 #include "phantom/windows/window.hpp"
 
+#include "phantom/events/application_event.hpp"
+#include "phantom/events/key_event.hpp"
+#include "phantom/events/mouse_event.hpp"
+
 namespace Phantom
 {
     class LinuxWindow : public Window
