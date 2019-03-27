@@ -52,8 +52,8 @@ namespace Phantom
             return GetCategoryFlags() & category;
         }
 
-      protected:
-        bool m_handled = false;
+        // Usually gets used by layers while handling events
+        bool handled = false;
     };
 
     class EventDispatcher
@@ -69,7 +69,7 @@ namespace Phantom
             bool ret_val = false;
             if (m_event.GetEventType() == T::GetStaticType())
             {
-                m_event.m_handled = func(*(T*)&m_event);
+                m_event.handled = func(*(T*)&m_event);
                 ret_val = true;
             }
             return ret_val;
