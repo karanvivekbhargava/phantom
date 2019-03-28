@@ -9,10 +9,15 @@ set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory(vendor/glfw)
 
+add_subdirectory(vendor/glad/)
+#set(glad_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glad)
+#find_package(glad REQUIRED CONFIG)
+
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog/include
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glad/include
 )
 
 file(GLOB_RECURSE SRCS src/*)
@@ -23,7 +28,14 @@ add_library( ${PROJECT_NAME} SHARED
     ${SRCS}
 )
 
-target_link_libraries( phantom glfw GL)
+target_link_libraries( phantom glfw GL glad )
+
+# glad
+#set(GLAD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glad)
+#add_library( glad ${GLAD_DIR}/src/glad.c)
+#target_include_directories(glad PRIVATE ${GLAD_DIR}/include)
+#target_include_directories(${PROJECT_NAME} PRIVATE ${GLAD_DIR}/include)
+#target_link_libraries(${PROJECT_NAME} glad ${CMAKE_DL_LIBS})
 
 
 #install(TARGETS phantom

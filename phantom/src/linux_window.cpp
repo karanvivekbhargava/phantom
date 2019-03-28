@@ -44,6 +44,8 @@ namespace Phantom
                                     nullptr,
                                     nullptr);
         glfwMakeContextCurrent(m_window);
+        int32_t status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+        PHTM_CORE_ASSERT(status, "Could not initialize Glad!");
         glfwSetWindowUserPointer(m_window, &m_data);
         SetVSync(true);
 

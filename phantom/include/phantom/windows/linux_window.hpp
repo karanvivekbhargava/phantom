@@ -1,11 +1,14 @@
 #pragma once
 
+#include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "phantom/windows/window.hpp"
 
 #include "phantom/events/application_event.hpp"
 #include "phantom/events/key_event.hpp"
 #include "phantom/events/mouse_event.hpp"
+
+struct GLFWwindow;
 
 namespace Phantom
 {
