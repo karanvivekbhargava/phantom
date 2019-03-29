@@ -4,10 +4,6 @@ project(casper)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include_directories(
-    ${phantom_SOURCE_DIR}/include
-)
-
 file(GLOB_RECURSE SRCS src/*)
 file(GLOB_RECURSE HDRS include/*)
 

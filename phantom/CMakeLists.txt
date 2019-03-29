@@ -8,14 +8,9 @@ set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory(vendor/glfw)
-
 add_subdirectory(vendor/glad)
-
 add_subdirectory(vendor/spdlog)
-
-include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
+add_subdirectory(vendor/imgui)
 
 file(GLOB_RECURSE SRCS src/*)
 file(GLOB_RECURSE HDRS include/*)
@@ -25,15 +20,16 @@ add_library( ${PROJECT_NAME} SHARED
     ${SRCS}
 )
 
-target_link_directories( ${PROJECT_NAME} PUBLIC
+target_include_directories( ${PROJECT_NAME} PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-target_link_libraries( ${PROJECT_NAME}
+target_link_libraries( ${PROJECT_NAME} PUBLIC
 	glfw
 	GL
 	glad
 	spdlog
+	imgui
 )
 
 #install(TARGETS phantom
