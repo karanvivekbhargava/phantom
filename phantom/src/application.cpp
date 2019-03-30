@@ -2,8 +2,13 @@
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 namespace Phantom
 {
+
+    Application* Application::s_instance = nullptr;
+
     Application::Application()
     {
+        PHTM_CORE_ASSERT(!s_instance, "Tried to launch multiple Application instances")
+        s_instance = this;
         m_is_running = true;
         m_window = std::unique_ptr<Window>(Window::Create());
         m_window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
@@ -54,10 +59,12 @@ namespace Phantom
     void Application::PushLayer(Layer *layer)
     {
         m_layerstack.PushLayer(layer);
+        layer->OnAttach();
     }
 
     void Application::PushOverlay(Layer *layer)
     {
         m_layerstack.PushOverlay(layer);
+        layer->OnAttach();
     }
 }

@@ -7,3 +7,4 @@
 #include "phantom/application.hpp"
 #include "phantom/log.hpp"
 #include "phantom/layers/layer.hpp"
+#include "phantom/imgui/imgui_layer.hpp"

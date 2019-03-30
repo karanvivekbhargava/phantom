@@ -25,6 +25,7 @@ public:
     Casper()
     {
         this->PushLayer(new ExampleLayer);
+        this->PushOverlay(new Phantom::ImGuiLayer());
     }
 
     ~Casper()

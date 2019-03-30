@@ -12,6 +12,10 @@ add_subdirectory(vendor/glad)
 add_subdirectory(vendor/spdlog)
 add_subdirectory(vendor/imgui)
 
+# This preprocessor definition is added after the glfw compile, since that's what glfw wants.
+# Also, this definition is here because glad was spitting errors otherwise (double including gl).
+add_definitions(-DGLFW_INCLUDE_NONE)
+
 file(GLOB_RECURSE SRCS src/*)
 file(GLOB_RECURSE HDRS include/*)
 
