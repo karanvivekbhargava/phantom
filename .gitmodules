@@ -7,3 +7,6 @@
 [submodule "phantom/vendor/glfw"]
 	path = phantom/vendor/glfw
 	url = https://github.com/glfw/glfw.git
+[submodule "phantom/vendor/imgui/src"]
+	path = phantom/vendor/imgui/src
+	url = https://github.com/ocornut/imgui
