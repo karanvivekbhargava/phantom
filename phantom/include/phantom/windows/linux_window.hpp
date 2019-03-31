@@ -16,7 +16,7 @@ namespace Phantom
     {
       public:
         LinuxWindow(const WindowProps& props);
-        virtual ~LinuxWindow();
+        virtual ~LinuxWindow() override;
 
         void OnUpdate() override;
 
@@ -27,6 +27,8 @@ namespace Phantom
         void SetEventCallback(const EventCallbackFn& callback) override {m_data.EventCallback = callback;}
         void SetVSync(bool enabled) override;
         bool IsVSync() const override;
+
+        inline virtual void* GetNativeWindow() const override { return m_window; }
       private:
         void Init(const WindowProps& props);
         void Shutdown();

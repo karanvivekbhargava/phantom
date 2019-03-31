@@ -1,4 +1,5 @@
 #include "phantom/application.hpp"
+#include "phantom/inputs/linux_input.hpp"
 
 namespace Phantom
 {
@@ -23,7 +24,6 @@ namespace Phantom
     {
         EventDispatcher dispatcher(e);
         dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
-        PHTM_CORE_TRACE("{0}", e);
 
         // We need to go backwards through the layers to handle events
         for (auto it = m_layerstack.end(); it != m_layerstack.begin(); )
@@ -45,6 +45,10 @@ namespace Phantom
             {
                 layer->OnUpdate();
             }
+
+            auto pos = Input::GetMousePosition();
+            PHTM_CORE_TRACE("{0}, {1}", pos.first, pos.second);
+
             // Update the window
             m_window->OnUpdate();
         }

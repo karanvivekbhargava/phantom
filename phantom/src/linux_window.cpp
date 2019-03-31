@@ -151,5 +151,8 @@ namespace Phantom
         m_data.vsync = enabled;
     }
 
-    bool LinuxWindow::IsVSync() const {return m_data.vsync;}
+    bool LinuxWindow::IsVSync() const
+    {
+        return m_data.vsync;
+    }
 }

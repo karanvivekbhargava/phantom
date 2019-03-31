@@ -10,12 +10,12 @@ class ExampleLayer : public Phantom::Layer
 
     void OnUpdate() override
     {
-        PHTM_CLIENT_INFO("ExampleLayer::Update");
+//        PHTM_CLIENT_INFO("ExampleLayer::Update");
     }
 
     void OnEvent(Phantom::Event& event) override
     {
-        PHTM_CLIENT_TRACE("{0}", event);
+//        PHTM_CLIENT_TRACE("{0}", event);
     }
 };
 
