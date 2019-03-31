@@ -74,8 +74,86 @@ void ImGuiLayer::OnUpdate()
 
 }
 
+bool ImGuiLayer::MouseMovedCallback(MouseMovedEvent& e)
+{
+    ImGuiIO& io = ImGui::GetIO();
+    io.MousePos = ImVec2(e.GetX(), e.GetY());
+    return false;
+}
+
+bool ImGuiLayer::MouseScrolledCallback(MouseScrolledEvent& e)
+{
+    ImGuiIO& io = ImGui::GetIO();
+    io.MouseWheelH += e.GetXOffset();
+    io.MouseWheel  += e.GetYOffset();
+    return false;
+}
+
+bool ImGuiLayer::MouseButtonPressedCallback(MouseButtonPressedEvent& e)
+{
+    ImGuiIO& io = ImGui::GetIO();
+    io.MouseDown[e.GetMouseButton()] = true;
+    return false;
+}
+
+bool ImGuiLayer::MouseButtonReleasedCallback(MouseButtonReleasedEvent& e)
+{
+    ImGuiIO& io = ImGui::GetIO();
+    io.MouseDown[e.GetMouseButton()] = false;
+    return false;
+}
+
+bool ImGuiLayer::KeyPressedCallback(KeyPressedEvent& e)
+{
+    ImGuiIO& io = ImGui::GetIO();
+    io.KeysDown[e.GetKeyCode()] = true;
+
+    io.KeyCtrl = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
+    io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
+    io.KeyAlt = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
+    io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
+
+    return false;
+}
+
+bool ImGuiLayer::KeyReleasedCallback(KeyReleasedEvent& e)
+{
+    ImGuiIO& io = ImGui::GetIO();
+    io.KeysDown[e.GetKeyCode()] = false;
+    return false;
+}
+
+bool ImGuiLayer::KeyTypedCallback(KeyTypedEvent& e)
+{
+    ImGuiIO& io = ImGui::GetIO();
+    int32_t keycode = e.GetKeyCode();
+    if (keycode > 0 && keycode < 0x10000)
+    {
+        io.AddInputCharacter(static_cast<ushort>(keycode));
+    }
+    return false;
+}
+
+bool ImGuiLayer::WindowResizeCallback(WindowResizeEvent& e)
+{
+    ImGuiIO& io = ImGui::GetIO();
+    io.DisplaySize = ImVec2(e.GetWidth(), e.GetHeight());
+    io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
+    glViewport(0, 0, e.GetWidth(), e.GetHeight());
+
+    return false;
+}
+
 void ImGuiLayer::OnEvent(Event& event)
 {
-
+    EventDispatcher dispatcher(event);
+    dispatcher.Dispatch<MouseMovedEvent>(BIND_EVENT_FN(ImGuiLayer::MouseMovedCallback));
+    dispatcher.Dispatch<MouseScrolledEvent>(BIND_EVENT_FN(ImGuiLayer::MouseScrolledCallback));
+    dispatcher.Dispatch<MouseButtonPressedEvent>(BIND_EVENT_FN(ImGuiLayer::MouseButtonPressedCallback));
+    dispatcher.Dispatch<MouseButtonReleasedEvent>(BIND_EVENT_FN(ImGuiLayer::MouseButtonReleasedCallback));
+    dispatcher.Dispatch<KeyPressedEvent>(BIND_EVENT_FN(ImGuiLayer::KeyPressedCallback));
+    dispatcher.Dispatch<KeyTypedEvent>(BIND_EVENT_FN(ImGuiLayer::KeyTypedCallback));
+    dispatcher.Dispatch<KeyReleasedEvent>(BIND_EVENT_FN(ImGuiLayer::KeyReleasedCallback));
+    dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(ImGuiLayer::WindowResizeCallback));
 }
 }

@@ -47,6 +47,25 @@ namespace Phantom
     };
 
     /**
+     * @brief The KeyTypedEvent class
+     * @details This class is an actual class which implements the KeyTyped
+     * class. This has support for the pressed key events only. Usually used for text fields.
+     */
+    class KeyTypedEvent : public KeyEvent
+    {
+      public:
+        KeyTypedEvent(int32_t keycode)
+            : KeyEvent(keycode) {}
+        std::string ToString() const override
+        {
+            std::stringstream ss;
+            ss << "KeyTypedEvent: " << m_keycode;
+            return ss.str();
+        }
+        EVENT_CLASS_TYPE(KeyTyped)
+    };
+
+    /**
      * @brief The KeyReleasedEvent class
      * @details This class creates the KeyReleasedEvents. This doesn't have the
      * repeat functionaliy of the KeyPressedEvent class. Hence this is simpler.

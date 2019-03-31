@@ -92,6 +92,13 @@ namespace Phantom
             }
         });
 
+        glfwSetCharCallback(m_window, [](GLFWwindow* window, uint32_t keycode)
+        {
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+            KeyTypedEvent event(static_cast<int32_t>(keycode));
+            data.EventCallback(event);
+        });
+
         glfwSetMouseButtonCallback(m_window, [](GLFWwindow* window, int32_t button, int32_t action, int32_t mods)
         {
             WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);

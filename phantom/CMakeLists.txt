@@ -36,8 +36,11 @@ target_link_libraries( ${PROJECT_NAME} PUBLIC
 	imgui
 )
 
-#install(TARGETS phantom
-#    LIBRARY DESTINATION lib
+# install(TARGETS phantom
+# 	RUNTIME DESTINATION bin
+# 	LIBRARY DESTINATION lib
+# 	ARCHIVE DESTINATION lib/static
+#)
 #    PUBLIC_HEADER DESTINATION include/phantom)
 
 #set_target_properties(${PROJECT_NAME} PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "phantom_pch.hpp")
