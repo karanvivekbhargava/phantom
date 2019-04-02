@@ -10,7 +10,10 @@ class ExampleLayer : public Phantom::Layer
 
     void OnUpdate() override
     {
-//        PHTM_CLIENT_INFO("ExampleLayer::Update");
+        if (Phantom::Input::IsKeyPressed(PHTM_KEY_TAB))
+        {
+            PHTM_CORE_TRACE("Tab is pressed!");
+        }
     }
 
     void OnEvent(Phantom::Event& event) override
