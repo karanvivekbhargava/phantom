@@ -12,6 +12,9 @@ add_subdirectory(vendor/glad)
 add_subdirectory(vendor/spdlog)
 add_subdirectory(vendor/imgui)
 
+set(GLM_TEST_ENABLE OFF CACHE BOOL "" FORCE)
+add_subdirectory(vendor/glm)
+
 # This preprocessor definition is added after the glfw compile, since that's what glfw wants.
 # Also, this definition is here because glad was spitting errors otherwise (double including gl).
 add_definitions(-DGLFW_INCLUDE_NONE)
@@ -33,7 +36,8 @@ target_link_libraries( ${PROJECT_NAME} PUBLIC
 	GL
 	glad
 	spdlog
-	imgui
+        imgui
+        glm
 )
 
 # install(TARGETS phantom

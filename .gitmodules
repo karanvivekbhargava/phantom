@@ -10,3 +10,6 @@
 [submodule "phantom/vendor/imgui/src"]
 	path = phantom/vendor/imgui/src
 	url = https://github.com/ocornut/imgui
+[submodule "phantom/vendor/glm"]
+	path = phantom/vendor/glm
+	url = https://github.com/g-truc/glm.git
