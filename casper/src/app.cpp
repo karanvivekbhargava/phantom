@@ -1,5 +1,5 @@
 #include "phantom/phantom.hpp"
-
+#include "imgui.h"
 #include <glm/vec3.hpp> // glm::vec3
 #include <glm/vec4.hpp> // glm::vec4
 #include <glm/mat4x4.hpp> // glm::mat4
@@ -25,12 +25,11 @@ class ExampleLayer : public Phantom::Layer
         auto cam = camera(5.0f, {0.5f, 0.6f});
     }
 
-    void OnUpdate() override
+    virtual void OnImGuiRender() override
     {
-        if (Phantom::Input::IsKeyPressed(PHTM_KEY_TAB))
-        {
-            PHTM_CORE_TRACE("Tab is pressed!");
-        }
+        ImGui::Begin("Test");
+        ImGui::Text("Hello World");
+        ImGui::End();
     }
 
     void OnEvent(Phantom::Event& event) override
@@ -44,8 +43,8 @@ class Casper : public Phantom::Application
 public:
     Casper()
     {
-        this->PushLayer(new ExampleLayer);
-        this->PushOverlay(new Phantom::ImGuiLayer());
+        PushLayer(new ExampleLayer);
+        PushOverlay(new Phantom::ImGuiLayer());
     }
 
     ~Casper()

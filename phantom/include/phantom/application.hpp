@@ -1,10 +1,12 @@
 #pragma once
 
+#include "phantom_pch.hpp"
 #include "phantom/log.hpp"
 #include "phantom/events/event.hpp"
 #include "phantom/events/application_event.hpp"
 #include "phantom/windows/linux_window.hpp"
 #include "phantom/layers/layer_stack.hpp"
+#include "phantom/imgui/imgui_layer.hpp"
 
 namespace Phantom
 {
@@ -29,6 +31,7 @@ namespace Phantom
         bool OnWindowClose(WindowCloseEvent& e);
 
         std::unique_ptr<Window> m_window;
+        ImGuiLayer* m_ImGuiLayer;
         bool m_is_running;
         LayerStack m_layerstack;
 

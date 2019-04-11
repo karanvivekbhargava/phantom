@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.0)
 project(phantom)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+#set(CMAKE_CXX_STANDARD 14)
+#set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
@@ -22,6 +22,17 @@ add_definitions(-DGLFW_INCLUDE_NONE)
 file(GLOB_RECURSE SRCS src/*)
 file(GLOB_RECURSE HDRS include/*)
 
+#file(GLOB IMGUI_FILES
+
+#)
+
+#include_directories(${PROJECT_NAME}
+##    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/src/examples/imgui_impl_opengl3.h
+##    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/src/examples/imgui_impl_opengl3.cpp
+##    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/src/examples/imgui_impl_glfw.h
+##    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/src/examples/imgui_impl_glfw.cpp
+#)
+
 add_library( ${PROJECT_NAME} SHARED
     ${HDRS}
     ${SRCS}
@@ -29,6 +40,7 @@ add_library( ${PROJECT_NAME} SHARED
 
 target_include_directories( ${PROJECT_NAME} PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/include
+
 )
 
 target_link_libraries( ${PROJECT_NAME} PUBLIC
